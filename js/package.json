@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "@xiaoxiaobai5724/flarum-theme-switch",
+  "dependencies": {
+    "flarum-webpack-config": "^2.0",
+    "flarum": "1.x"
+  },
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  }
+}
