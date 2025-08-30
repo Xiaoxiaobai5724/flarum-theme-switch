@@ -1,0 +1,10 @@
+flarum-theme-switch:
+  forum:
+    settings:
+      title: 主题
+      help: 选择您最喜爱的一个主题。
+      options:
+        hubui:   ThemeHub
+        wanxi:   晚夕社区
+        fluent:  Fluent
+        moderno: Moderno
