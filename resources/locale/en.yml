@@ -1,0 +1,10 @@
+flarum-theme-switch:
+  forum:
+    settings:
+      title: Theme
+      help: Choose your favorite color scheme.
+      options:
+        hubui:   ThemeHub (HubUi-X)
+        wanxi:   WanXi
+        fluent:  Fluent
+        moderno: Moderno
