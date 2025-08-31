@@ -1,8 +1,8 @@
 {
   "name": "xiaoxiaobai5724/flarum-theme-switch",
   "type": "flarum-extension",
-  "require": { "flarum/core": "^1.0" },
-  "autoload": { "psr-4": { "Demo\\ThemeSwitcher\\": "src/" } },
+  "require": { "flarum/core": "^1.8.0" },
+  "autoload": { "psr-4": { "Xiaoxiaobai5724\\ThemeSwitcher\\": "src/" } },
   "extra": {
     "flarum-extension": {
       "title": "Theme Switcher",
