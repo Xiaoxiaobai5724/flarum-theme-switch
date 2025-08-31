@@ -3,34 +3,43 @@
 use Flarum\Extend;
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\User\User;
-use Illuminate\Contracts\View\Factory;
+use Flarum\Frontend\Document;
+use Illuminate\Support\Str;
 
 return [
-    // 把 theme 字段暴露给前端
+
+    /* 1. 暴露字段给前端 */
     (new Extend\ApiSerializer(UserSerializer::class))
         ->attribute('theme', fn ($serializer, User $user) => $user->getPreference('theme', 'hubui')),
 
-    // 允许前端修改 theme 偏好
+    /* 2. 允许用户修改 theme 偏好 */
     (new Extend\User())
         ->registerPreference('theme', 'strval', 'hubui'),
 
-    // 根据当前主题注入对应的 less/css
+    /* 3. 把 4 个主题注册成可访问的资源（可选编译） */
     (new Extend\Frontend('forum'))
-        ->css(function (Factory $view, User $user) {
+        ->css(__DIR__ . '/resources/less/hubui.less',   'theme-hubui')
+        ->css(__DIR__ . '/resources/less/wanxi.less',   'theme-wanxi')
+        ->css(__DIR__ . '/resources/less/fluent.less',  'theme-fluent')
+        ->css(__DIR__ . '/resources/less/moderno.less', 'theme-moderno'),
+
+    /* 4. 根据当前用户 theme 把对应 <link rel="stylesheet"> 插入 <head> */
+    (new Extend\Frontend('forum'))
+        ->content(function (Document $document, User $user) {
             $theme = $user->getPreference('theme', 'hubui');
 
-            // 只注入存在的文件；文件名与 $theme 同名
-            $file = __DIR__ . "/resources/less/{$theme}.less";
-            if (file_exists($file)) {
-                // 返回相对路径，Flarum 会自动编译
-                return $view->make('flarum.forum::frontend.content.css', [
-                    'css' => ["theme-switcher/less/{$theme}.less"]
-                ]);
+            // 只接受白名单，防止任意文件名
+            if (!in_array($theme, ['hubui', 'wanxi', 'fluent', 'moderno'])) {
+                $theme = 'hubui';
             }
-            return null;
+
+            $cssUrl = app('flarum.assets.forum')->getAssetUrl("theme-{$theme}.css");
+            if ($cssUrl) {
+                $document->head[] = '<link rel="stylesheet" href="' . e($cssUrl) . '">';
+            }
         }),
 
-    // 引入论坛 JS
+    /* 5. 论坛 JS（设置页组件） */
     (new Extend\Frontend('forum'))
         ->js(__DIR__ . '/js/dist/forum.js'),
 ];
