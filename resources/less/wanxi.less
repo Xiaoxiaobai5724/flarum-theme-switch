@@ -1,0 +1,92 @@
+@border-radius: 8px;
+.Hero-close {
+  display: none;
+}
+.Button:active,
+.Button.active,
+.open>.Button.Dropdown-toggle {
+  box-shadow: unset;
+}
+.Button {
+  transition: background-color 0.4s;
+}
+.FormControl {
+  transition: border-color 0.4s;
+  border: 1px solid var(--control-bg);
+  border-radius: 8px;
+  background-color: transparent;
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .Search-input>input:not(:focus) {
+    border-color: transparent;
+  }
+}
+@media (min-width:768px) {
+  .Search-input>input {
+    border-radius: 40px !important;
+  }
+  .Dropdown-menu {
+    padding: 6px 6px 3px;
+    >li>a,
+    >li>button,
+    >li>span {
+      border-radius: 4px;
+      margin-bottom: 3px;
+    }
+  }
+  .item-nav>div>ul>li {
+    margin: 4px 0;
+    padding: 0.25px 8px;
+    border-radius: 8px;
+    &:hover {
+      background-color: var(--control-bg-light);
+    }
+    &.active {
+      background-color: var(--control-bg);
+    }
+    &>a {
+      margin: 0;
+    }
+  }
+  ul.NotificationGroup-content>li {
+    margin: 6px;
+    &>a.Notification {
+      border-radius: 4px;
+    }
+  }
+  .Composer:not(.fullScreen) {
+    margin-left: 6% !important;
+    margin-right: 6% !important;
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+}
+.DiscussionListItem-info .TagLabel {
+  background-color: transparent;
+  border-radius: 16px !important;
+  margin-left: 4px !important;
+}
+.DiscussionListItem-info .TagLabel.colored,
+.TagLabel--colored {
+  --tag-color: var(--tag-bg);
+  border: 1px solid var(--tag-bg);
+}
+.Post-warning-preview {
+  padding: 0;
+}
+.WarningPreview {
+  margin-bottom: -2px !important;
+}
+.WarningListItem-info .WarningListItem-comment {
+  border-radius: 8px !important;
+}
+@media (max-width:767px) {
+  .DiscussionPage-nav>ul>li {
+    margin: 3px;
+  }
+}
+.LoadingIndicator {
+  border-color: var(--control-bg);
+  border-width: 3px;
+  border-top-color: var(--muted-color-light);
+}
