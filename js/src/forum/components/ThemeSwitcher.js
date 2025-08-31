@@ -10,10 +10,11 @@ export default class ThemeSwitcher extends Component {
 
   view() {
     const themes = {
-      default: app.translator.trans('demo-theme-switcher.forum.settings.options.default'),
-      dark: app.translator.trans('demo-theme-switcher.forum.settings.options.dark'),
-      pink: app.translator.trans('demo-theme-switcher.forum.settings.options.pink'),
-    };
+  hubui:   app.translator.trans('xiaoxiaobai5724-flarum-theme-switch.forum.settings.options.hubui'),
+  wanxi:   app.translator.trans('xiaoxiaobai5724-flarum-theme-switch.forum.settings.options.wanxi'),
+  fluent:  app.translator.trans('xiaoxiaobai5724-flarum-theme-switch.forum.settings.options.fluent'),
+  moderno: app.translator.trans('xiaoxiaobai5724-flarum-theme-switch.forum.settings.options.moderno'),
+};
 
     return (
       <div className="Form-group">
